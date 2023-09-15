@@ -17,6 +17,9 @@ const app = express()
 app.use(express.json())
 app.use(morgan("dev")) // log requests to the console (only in development)
 
+// routes
+app.use('/api/v1/auth',authRoutes)
+
 // rest api
 app.get('/', (req, res) => {
     res.send(
