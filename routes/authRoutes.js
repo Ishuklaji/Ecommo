@@ -11,4 +11,5 @@ router.post('/register',registerController)
 
 // LOGIN || METHOD POST
 router.post("/login",loginController)
+
 module.exports = router
