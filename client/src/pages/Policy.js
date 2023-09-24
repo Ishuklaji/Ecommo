@@ -31,7 +31,7 @@ const Policy = () => {
                     </p>
                     <p>
                         For more details on how we handle your personal information and
-                        protect your privacy, please read our full Privacy Policy.
+                        protect your privacy, please read our complete Privacy Policy.
                     </p>
                 </div>
             </div>
