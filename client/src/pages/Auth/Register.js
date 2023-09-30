@@ -4,6 +4,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import "../../styles/AuthStyles.css";
+
 const Register = () => {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -39,7 +40,7 @@ const Register = () => {
         <Layout title="Register - Ecommo">
             <div className="form-container ">
                 <form onSubmit={handleSubmit}>
-                    <h4 className="title">REGISTER FORM</h4>
+                    <h4 className="title">REGISTER HERE</h4>
                     <div className="mb-3">
                         <input
                             type="text"
@@ -97,7 +98,7 @@ const Register = () => {
                         />
                     </div>
                     <button type="submit" className="btn btn-primary">
-                        REGISTER
+                        SIGN UP
                     </button>
                 </form>
             </div>
