@@ -1,5 +1,5 @@
 const express = require('express');
-const { registerController, loginController, testController } = require('../controllers/authController')
+const { registerController, loginController, testController, forgotPasswordController } = require('../controllers/authController')
 const { requireSignIn, isAdmin } = require("../middlewares/authMiddleware")
 
 // router object
@@ -13,7 +13,15 @@ router.post('/register',registerController)
 // LOGIN || METHOD POST
 router.post("/login",loginController)
 
+//Forgot Password || POST
+router.post("/forgot-password", forgotPasswordController);
+
 //test routes
 router.get("/test", requireSignIn, isAdmin, testController);
+
+//protected route auth
+router.get("/user-auth", requireSignIn, (req, res) => {
+    res.status(200).send({ ok: true });
+});
 
 module.exports = router
