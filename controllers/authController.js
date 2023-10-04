@@ -4,7 +4,7 @@ const JWT = require("jsonwebtoken")
 
 const registerController = async (req, res) => {
     try {
-        const { name, email, password, phone, address } = req.body;
+        const { name, email, password, phone, address, answer } = req.body;
         //validations
         if (!name) {
             return res.send({ error: "Name is Required" });
@@ -20,6 +20,9 @@ const registerController = async (req, res) => {
         }
         if (!address) {
             return res.send({ error: "Address is Required" });
+        }
+        if (!answer) {
+            return res.send({ message: "Answer is Required" });
         }
 
         //check user
@@ -43,6 +46,7 @@ const registerController = async (req, res) => {
             phone,
             address,
             password: hashedPassword,
+            answer,
         }).save();
 
         res.status(201).send({
@@ -152,7 +156,7 @@ const forgotPasswordController = async (req, res) => {
         
         res.status(200).send({
             success: true,
-            message: "Password Reset Successfully",
+            message: "Password Reset Successfull",
         });
     } catch (error) {
         console.log(error);
