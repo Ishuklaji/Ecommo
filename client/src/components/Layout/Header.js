@@ -82,7 +82,7 @@ const Header = () => {
                                                     to="/login"
                                                     className="dropdown-item"
                                                 >
-                                                    Logout
+                                                    LogOut
                                                 </NavLink>
                                             </li>
                                         </ul>
