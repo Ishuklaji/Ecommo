@@ -25,7 +25,7 @@ const createCategoryController = async (req, res) => {
 
         res.status(201).send({
             success: true,
-            message: "new category created",
+            message: "New category created",
             category,
         });
     } catch (error) {
