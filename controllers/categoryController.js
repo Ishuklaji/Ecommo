@@ -14,7 +14,7 @@ const createCategoryController = async (req, res) => {
         if (existingCategory) {
             return res.status(200).send({
                 success: true,
-                message: "Category Already Exisits",
+                message: "Category Already Exists",
             });
         }
 
