@@ -92,7 +92,7 @@ const singleCategoryController = async (req, res) => {
 
         res.status(200).send({
             success: true,
-            message: "Get SIngle Category SUccessfully",
+            message: "Get SIngle Category Successfully",
             category,
         });
     } catch (error) {
