@@ -32,7 +32,7 @@ const registerController = async (req, res) => {
         if (exisitingUser) {
             return res.status(200).send({
                 success: true,
-                message: "Already Registered please Login imto your account",
+                message: "Already Registered please Login into your account",
             });
         }
 
