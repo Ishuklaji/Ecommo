@@ -1,17 +1,21 @@
-const express = require('express');
-const { registerController, loginController, testController, forgotPasswordController } = require('../controllers/authController')
-const { requireSignIn, isAdmin } = require("../middlewares/authMiddleware")
+import express from "express";
+import {
+    registerController,
+    loginController,
+    testController,
+    forgotPasswordController,
+} from "../controllers/authController.js";
+import { isAdmin, requireSignIn } from "../middlewares/authMiddleware.js";
 
-// router object
+//router object
 const router = express.Router();
 
-// routing
+//routing
+//REGISTER || METHOD POST
+router.post("/register", registerController);
 
-// REGISTER || METHOD POST
-router.post('/register',registerController)
-
-// LOGIN || METHOD POST
-router.post("/login",loginController)
+//LOGIN || POST
+router.post("/login", loginController);
 
 //Forgot Password || POST
 router.post("/forgot-password", forgotPasswordController);
@@ -23,10 +27,9 @@ router.get("/test", requireSignIn, isAdmin, testController);
 router.get("/user-auth", requireSignIn, (req, res) => {
     res.status(200).send({ ok: true });
 });
-
 //protected Admin route auth
 router.get("/admin-auth", requireSignIn, isAdmin, (req, res) => {
     res.status(200).send({ ok: true });
 });
 
-module.exports = router
+export default router;

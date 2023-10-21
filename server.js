@@ -1,11 +1,12 @@
-const express = require('express')
-const colors = require('colors')
-const dotenv = require('dotenv')
-const morgan = require('morgan')
-const connectDB = require('./config/db')
-const authRoutes = require("./routes/authRoutes")
-const categoryRoutes = require("./routes/categoryRoutes")
-const cors = require("cors")
+import express from "express";
+import colors from "colors";
+import dotenv from "dotenv";
+import morgan from "morgan";
+import connectDB from "./config/db.js";
+import authRoutes from "./routes/authRoutes.js";
+import categoryRoutes from "./routes/categoryRoutes.js";
+import cors from "cors";
+
 // configure env
 dotenv.config()
 

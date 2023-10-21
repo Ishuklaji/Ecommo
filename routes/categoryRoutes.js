@@ -1,12 +1,12 @@
-const express = require('express');
-const { requireSignIn, isAdmin } = require("../middlewares/authMiddleware")
-const {
+import express from "express";
+import { isAdmin, requireSignIn } from "./../middlewares/authMiddleware.js";
+import {
     categoryControlller,
     createCategoryController,
     deleteCategoryCOntroller,
     singleCategoryController,
     updateCategoryController,
-} = require("../controllers/categoryController");
+} from "./../controllers/categoryController.js";
 
 const router = express.Router();
 
@@ -41,4 +41,4 @@ router.delete(
     deleteCategoryCOntroller
 );
 
-module.exports = router
+export default router;

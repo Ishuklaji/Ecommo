@@ -1,8 +1,8 @@
-const userModel = require("../models/userModel")
-const { hashPassword, comparePassword } = require("../helpers/authHelper")
-const JWT = require("jsonwebtoken")
+import userModel from "../models/userModel.js";
+import { comparePassword, hashPassword } from "./../helpers/authHelper.js";
+import JWT from "jsonwebtoken";
 
-const registerController = async (req, res) => {
+export const registerController = async (req, res) => {
     try {
         const { name, email, password, phone, address, answer } = req.body;
         //validations
@@ -10,35 +10,31 @@ const registerController = async (req, res) => {
             return res.send({ error: "Name is Required" });
         }
         if (!email) {
-            return res.send({ error: "Email is Required" });
+            return res.send({ message: "Email is Required" });
         }
         if (!password) {
-            return res.send({ error: "Password is Required" });
+            return res.send({ message: "Password is Required" });
         }
         if (!phone) {
-            return res.send({ error: "Phone no is Required" });
+            return res.send({ message: "Phone no is Required" });
         }
         if (!address) {
-            return res.send({ error: "Address is Required" });
+            return res.send({ message: "Address is Required" });
         }
         if (!answer) {
             return res.send({ message: "Answer is Required" });
         }
-
         //check user
         const exisitingUser = await userModel.findOne({ email });
-
         //exisiting user
         if (exisitingUser) {
             return res.status(200).send({
-                success: true,
-                message: "Already Registered please Login into your account",
+                success: false,
+                message: "Already Register please login",
             });
         }
-
         //register user
         const hashedPassword = await hashPassword(password);
-
         //save
         const user = await new userModel({
             name,
@@ -54,23 +50,20 @@ const registerController = async (req, res) => {
             message: "User Register Successfully",
             user,
         });
-    }
-    catch (error) {
+    } catch (error) {
         console.log(error);
         res.status(500).send({
             success: false,
-            message: "Error while registering the user",
-            error
-        })
+            message: "Errro in Registeration",
+            error,
+        });
     }
-}
+};
 
 //POST LOGIN
-
-const loginController = async (req, res) => {
+export const loginController = async (req, res) => {
     try {
         const { email, password } = req.body;
-
         //validation
         if (!email || !password) {
             return res.status(404).send({
@@ -78,7 +71,6 @@ const loginController = async (req, res) => {
                 message: "Invalid email or password",
             });
         }
-
         //check user
         const user = await userModel.findOne({ email });
         if (!user) {
@@ -87,7 +79,6 @@ const loginController = async (req, res) => {
                 message: "Email is not registerd",
             });
         }
-
         const match = await comparePassword(password, user.password);
         if (!match) {
             return res.status(200).send({
@@ -95,22 +86,20 @@ const loginController = async (req, res) => {
                 message: "Invalid Password",
             });
         }
-
         //token
         const token = await JWT.sign({ _id: user._id }, process.env.JWT_SECRET, {
             expiresIn: "7d",
         });
-
         res.status(200).send({
             success: true,
-            message: "Logged-In Successfully",
+            message: "login successfully",
             user: {
                 _id: user._id,
                 name: user.name,
                 email: user.email,
                 phone: user.phone,
                 adddress: user.address,
-                role: user.role
+                role: user.role,
             },
             token,
         });
@@ -126,10 +115,9 @@ const loginController = async (req, res) => {
 
 //forgotPasswordController
 
-const forgotPasswordController = async (req, res) => {
+export const forgotPasswordController = async (req, res) => {
     try {
         const { email, answer, newPassword } = req.body;
-
         if (!email) {
             res.status(400).send({ message: "Emai is required" });
         }
@@ -139,10 +127,8 @@ const forgotPasswordController = async (req, res) => {
         if (!newPassword) {
             res.status(400).send({ message: "New Password is required" });
         }
-
         //check
         const user = await userModel.findOne({ email, answer });
-
         //validation
         if (!user) {
             return res.status(404).send({
@@ -150,14 +136,11 @@ const forgotPasswordController = async (req, res) => {
                 message: "Wrong Email Or Answer",
             });
         }
-
         const hashed = await hashPassword(newPassword);
-
         await userModel.findByIdAndUpdate(user._id, { password: hashed });
-
         res.status(200).send({
             success: true,
-            message: "Password Reset Successfull",
+            message: "Password Reset Successfully",
         });
     } catch (error) {
         console.log(error);
@@ -170,7 +153,7 @@ const forgotPasswordController = async (req, res) => {
 };
 
 //test controller
-const testController = (req, res) => {
+export const testController = (req, res) => {
     try {
         res.send("Protected Routes");
     } catch (error) {
@@ -178,5 +161,3 @@ const testController = (req, res) => {
         res.send({ error });
     }
 };
-
-module.exports = { registerController, loginController, testController, forgotPasswordController }
