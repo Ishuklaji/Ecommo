@@ -60,7 +60,7 @@ const updateCategoryController = async (req, res) => {
         res.status(500).send({
             success: false,
             error,
-            message: "Error while updating category",
+            message: "Error while updating the category",
         });
     }
 };
