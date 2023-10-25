@@ -71,7 +71,7 @@ export const categoryControlller = async (req, res) => {
         res.status(500).send({
             success: false,
             error,
-            message: "Error while getting all categories",
+            message: "Error while getting all Categories",
         });
     }
 };
@@ -82,7 +82,7 @@ export const singleCategoryController = async (req, res) => {
         const category = await categoryModel.findOne({ slug: req.params.slug });
         res.status(200).send({
             success: true,
-            message: "Get Single Category SUccessfully",
+            message: "Get Single Category Successfully",
             category,
         });
     } catch (error) {
