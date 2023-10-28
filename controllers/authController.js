@@ -107,7 +107,7 @@ export const loginController = async (req, res) => {
         console.log(error);
         res.status(500).send({
             success: false,
-            message: "Error in login",
+            message: "Error in logIn",
             error,
         });
     }
