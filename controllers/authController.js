@@ -113,7 +113,7 @@ export const loginController = async (req, res) => {
     }
 };
 
-//forgotPasswordController
+// forgot Password Controller
 
 export const forgotPasswordController = async (req, res) => {
     try {
