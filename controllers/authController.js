@@ -119,7 +119,7 @@ export const forgotPasswordController = async (req, res) => {
     try {
         const { email, answer, newPassword } = req.body;
         if (!email) {
-            res.status(400).send({ message: "Email is required" });
+            res.status(400).send({ message: "Email ID is required" });
         }
         if (!answer) {
             res.status(400).send({ message: "Answer is required" });
