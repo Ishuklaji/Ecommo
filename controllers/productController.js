@@ -4,8 +4,7 @@ import slugify from "slugify";
 
 export const createProductController = async (req, res) => {
     try {
-        const { name, description, price, category, quantity, shipping } =
-            req.fields;
+        const { name, description, price, category, quantity, shipping } = req.fields;
         const { photo } = req.files;
         //Validation
         switch (true) {
@@ -22,7 +21,7 @@ export const createProductController = async (req, res) => {
             case photo && photo.size > 1000000:
                 return res
                     .status(500)
-                    .send({ error: "photo is Required and should be less then 1mb" });
+                    .send({ error: "Picture is Required and should be less then 1mb" });
         }
 
         const products = new productModel({ ...req.fields, slug: slugify(name) });
