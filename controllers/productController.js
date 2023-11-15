@@ -171,7 +171,7 @@ export const updateProductController = async (req, res) => {
         res.status(500).send({
             success: false,
             error,
-            message: "Error in Updte product",
+            message: "Error in Updating product",
         });
     }
 };
