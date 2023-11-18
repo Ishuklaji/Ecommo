@@ -27,7 +27,7 @@ const CreateProduct = () => {
             }
         } catch (error) {
             console.log(error);
-            toast.error("Something wwent wrong in getting catgeory");
+            toast.error("Something wwent wrong in getting catgeory list");
         }
     };
 
