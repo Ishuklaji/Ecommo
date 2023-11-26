@@ -30,7 +30,7 @@ const HomePage = () => {
         getTotal();
     }, []);
 
-    //get products
+    //get all products
     const getAllProducts = async () => {
         try {
             setLoading(true);
