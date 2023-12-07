@@ -85,7 +85,7 @@ const CreateCategory = () => {
                 toast.error(data.message);
             }
         } catch (error) {
-            toast.error("Something went wrong while deleting");
+            toast.error("Something went wrong while deleting the category");
         }
     };
 
