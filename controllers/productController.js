@@ -69,6 +69,7 @@ export const getProductController = async (req, res) => {
         });
     }
 };
+
 // get single product
 export const getSingleProductController = async (req, res) => {
     try {
@@ -85,7 +86,7 @@ export const getSingleProductController = async (req, res) => {
         console.log(error);
         res.status(500).send({
             success: false,
-            message: "Eror while getitng single product",
+            message: "Error while getitng single product",
             error,
         });
     }
@@ -192,7 +193,7 @@ export const productFiltersController = async (req, res) => {
         console.log(error);
         res.status(400).send({
             success: false,
-            message: "Error WHile Filtering Products",
+            message: "Error While Filtering Products",
             error,
         });
     }
