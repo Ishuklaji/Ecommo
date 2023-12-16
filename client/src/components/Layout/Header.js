@@ -2,9 +2,13 @@ import React from "react";
 import { NavLink, Link } from "react-router-dom";
 import { useAuth } from "../../context/Auth";
 import toast from "react-hot-toast";
+import SearchInput from "../Form/SearchInput";
+import useCategory from "../../hooks/useCategory";
 
 const Header = () => {
     const [auth, setAuth] = useAuth();
+    const categories = useCategory();
+    
     const handleLogout = () => {
         setAuth({
             ...auth,
@@ -35,6 +39,7 @@ const Header = () => {
                             🛒 Ecommo
                         </Link>
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                            <SearchInput />
                             <li className="nav-item">
                                 <NavLink to="/" className="nav-link ">
                                     Home
