@@ -8,10 +8,11 @@ const ProductDetails = () => {
     const [product, setProduct] = useState({});
     const [relatedProducts, setRelatedProducts] = useState([]);
 
-    //initalp details
+    //inital details
     useEffect(() => {
         if (params?.slug) getProduct();
     }, [params?.slug]);
+
     //getProduct
     const getProduct = async () => {
         try {
