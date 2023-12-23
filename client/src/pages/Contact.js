@@ -16,7 +16,7 @@ const Contact = () => {
                     <h1 className="bg-dark p-2 text-white text-center">CONTACT US</h1>
                     <p className="text-justify mt-2">
                         any query and info about product feel free to call anytime we 24X7
-                        vaialible
+                        available
                     </p>
                     <p className="mt-3">
                         <BiMailSend /> : www.help@ecommo.com
