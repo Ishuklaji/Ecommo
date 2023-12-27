@@ -196,7 +196,7 @@ const UpdateProduct = () => {
                                 <input
                                     type="number"
                                     value={quantity}
-                                    placeholder="write a quantity"
+                                    placeholder="Write a quantity"
                                     className="form-control"
                                     onChange={(e) => setQuantity(e.target.value)}
                                 />
